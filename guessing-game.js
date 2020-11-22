@@ -6,8 +6,15 @@ const rl = readline.createInterface({
 });
 
 let secretNumber = 0
-let numAttempts = 10
+let numAttempts = 0
 
+const askLimit = () => {
+    rl.question('Enter max amount of attempts: ', (num) => {
+        numAttempts = Number(num)
+        askRange()
+    });
+}
+askLimit()
 const askRange = () => {
     rl.question('Enter a min number: ', (answerMin) => {
         rl.question('Enter a max number: ', (answerMax) => {
@@ -20,7 +27,6 @@ const askRange = () => {
         });
     });
 }
-askRange()
 
 const randomInRange = (min, max) => {
     min = Math.ceil(min);
